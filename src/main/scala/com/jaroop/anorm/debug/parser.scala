@@ -19,9 +19,11 @@ object parserDebugMacro {
 
         val helper = new { val ctx: c.type = c } with Helper
 
+        val annotationType = tq"com.jaroop.anorm.debug.parser"
+
         // Name of the debugger
         val name: String = c.prefix.tree match {
-            case q"new com.jaroop.anorm.debug.parser($nme)" => c.eval[String](c.Expr(nme))
+            case q"new $annotationType($nme)" => c.eval[String](c.Expr(nme))
         }
 
         val result = annottees.map(_.tree) match {
