@@ -9,7 +9,8 @@ scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "anorm" % "2.3.9",
-  "org.scala-lang" % "scala-reflect" % "2.11.7"
+  "org.scala-lang" % "scala-reflect" % "2.11.7",
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
 )
 
 resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo)

@@ -29,11 +29,11 @@ object parserDebugMacro {
         val result = annottees.map(_.tree) match {
             case (valDef @ q"$mods val $tname: $tpt = $expr.map($func)") :: Nil => {
                 val debugger = helper.replace(helper.split(expr, Nil))
-                q"$mods val $tname: $tpt = com.jaroop.anorm.debug.RowParserDebugger.group($debugger.map($func), ${name.toString})"
+                q"$mods val $tname: $tpt = com.jaroop.anorm.debug.RowParserDebugger.group($debugger.map($func), ${name})"
             }
             case (defDef @ q"$mods def $tname: $tpt = $expr.map($func)") :: Nil => {
                 val debugger = helper.replace(helper.split(expr, Nil))
-                q"$mods def $tname: $tpt = com.jaroop.anorm.debug.RowParserDebugger.group($debugger.map($func), ${name.toString})"
+                q"$mods def $tname: $tpt = com.jaroop.anorm.debug.RowParserDebugger.group($debugger.map($func), ${name})"
             }
             case _ => c.abort(c.enclosingPosition, "???")
         }
